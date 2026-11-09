@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fffafc" />
+    <meta
+      name="description"
+      content="ØFF-LINE dance auditions in Nicosia, Cyprus. English and Greek required."
+    />
+    <title>ØFF-LINE | Auditions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fffafc;
+        --card: rgba(255, 255, 255, 0.84);
+        --ink: #2d2433;
+        --muted: #6f6175;
+        --pink: #ff6ca8;
+        --pink-deep: #ee4f9d;
+        --purple: #8c7cff;
+        --mint: #78d3c5;
+        --line: #f4dfe9;
+        --shadow: 0 22px 60px rgba(98, 64, 90, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        min-width: 320px;
+        margin: 0;
+        color: var(--ink);
+        font-family: "Manrope", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(255, 108, 168, .18), transparent 25rem),
+          radial-gradient(circle at bottom right, rgba(140, 124, 255, .16), transparent 27rem),
+          linear-gradient(180deg, var(--bg), #fff 75%);
+      }
+      button, input, select, textarea { font: inherit; }
+      a { color: inherit; }
+      .page { width: min(940px, calc(100% - 32px)); margin: 0 auto; }
+      .topbar { display: flex; justify-content: flex-end; padding-top: 18px; }
+      .switch {
+        display: inline-flex;
+        gap: 4px;
+        padding: 6px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255,255,255,.82);
+        box-shadow: 0 8px 24px rgba(66,47,61,.08);
+      }
+      .lang-btn {
+        min-width: 46px;
+        border: 0;
+        border-radius: 999px;
+        padding: 9px 13px;
+        color: var(--muted);
+        background: transparent;
+        font-weight: 800;
+        cursor: pointer;
+        transition: background .2s ease, color .2s ease;
+      }
+      .lang-btn.active { color: #fff; background: var(--ink); }
+      .lang-btn:focus-visible, button:focus-visible, a:focus-visible {
+        outline: 3px solid rgba(140,124,255,.7);
+        outline-offset: 3px;
+      }
+      .hero { position: relative; padding: 26px 0 14px; text-align: center; }
+      .sparkle { position: absolute; font-size: 1.8rem; opacity: .9; animation: floaty 3s ease-in-out infinite; }
+      .sparkle.s1 { top: 40px; left: 10%; color: var(--purple); }
+      .sparkle.s2 { top: 100px; right: 11%; color: var(--pink); animation-delay: .8s; }
+      @keyframes floaty {
+        0%, 100% { transform: translateY(0) rotate(0); }
+        50% { transform: translateY(-10px) rotate(12deg); }
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 14px;
+        color: var(--pink-deep);
+        background: rgba(255,255,255,.82);
+        font-size: .72rem;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      .title {
+        margin: 18px 0 12px;
+        font-family: "Outfit", sans-serif;
+        font-size: clamp(3rem, 10vw, 6.1rem);
+        line-height: .95;
+        letter-spacing: -.05em;
+      }
+      .title .special { color: var(--pink); text-shadow: 2px 3px 0 #ffdbe9; }
+      .sub { max-width: 680px; margin: 0 auto; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+      .badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+      .badge {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 10px 16px;
+        background: rgba(255,255,255,.82);
+        font-weight: 800;
+      }
+      .badge.pink { color: var(--pink-deep); }
+      .badge.mint { color: #1f7f72; }
+      .badge.purple { color: #5f4ec7; }
+      .card {
+        margin: 26px 0;
+        padding: clamp(22px, 5vw, 36px);
+        border: 1px solid rgba(244,223,233,.9);
+        border-radius: 28px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
+      }
+      .section-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+      .num {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+        place-items: center;
+        border-radius: 14px;
+        color: white;
+        background: linear-gradient(135deg, var(--pink), #f7a0c6);
+        box-shadow: 0 10px 22px rgba(255,108,168,.22);
+        font-weight: 800;
+      }
+      h2 { margin: 0; font-family: "Outfit", sans-serif; font-size: clamp(1.5rem,4vw,2.2rem); line-height: 1.1; }
+      .requirements { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+      .req-item {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--purple);
+        border-radius: 18px;
+        background: rgba(255,255,255,.58);
+      }
+      .req-item h3 { margin: 0 0 8px; color: var(--purple); font-size: 1.05rem; }
+      .req-item p { margin: 0; color: var(--muted); font-size: .95rem; line-height: 1.65; }
+      form { display: grid; gap: 20px; }
+      .rows { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      .field { display: flex; flex-direction: column; gap: 8px; }
+      label { color: var(--ink); font-size: .94rem; font-weight: 800; }
+      .required { color: var(--pink-deep); }
+      input, select, textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px 16px;
+        color: var(--ink);
+        background: rgba(255,255,255,.86);
+        transition: border-color .2s ease, box-shadow .2s ease;
+      }
+      input::placeholder, textarea::placeholder { color: #a69bb0; }
+      input:focus, select:focus, textarea:focus { border-color: var(--pink); box-shadow: 0 0 0 4px rgba(255,108,168,.12); outline: none; }
+      textarea { min-height: 110px; resize: vertical; }
+      .checkbox-block { padding: 16px 18px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.6); }
+      .checkbox-label { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+      .checkbox-label + .checkbox-label { margin-top: 12px; }
+      .checkbox-label input { width: 20px; height: 20px; flex: 0 0 20px; margin: 1px 0 0; accent-color: var(--pink-deep); }
+      .small-note { margin-top: 10px; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+      .submit-btn {
+        border: 0;
+        border-radius: 16px;
+        padding: 17px 22px;
+        color: white;
+        background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+        box-shadow: 0 16px 28px rgba(238,79,157,.28);
+        font-weight: 900;
+        letter-spacing: .04em;
+        cursor: pointer;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 18px 32px rgba(238,79,157,.34); }
+      .modal {
+        position: fixed;
+        z-index: 99;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        background: rgba(27,21,30,.72);
+      }
+      .modal.show { display: flex; }
+      .modal-box {
+        width: min(520px,100%);
+        padding: 30px 24px 22px;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        background: white;
+        box-shadow: 0 20px 60px rgba(43,28,40,.14);
+        text-align: center;
+      }
+      .modal-box h3 { margin: 0 0 12px; color: var(--pink-deep); font-family: "Outfit",sans-serif; font-size: clamp(1.9rem,5vw,2.5rem); }
+      .modal-box p { margin: 0 0 18px; color: var(--muted); line-height: 1.65; }
+      .modal-box button { border: 0; border-radius: 12px; padding: 12px 20px; color: #0d2d2a; background: var(--mint); font-weight: 900; cursor: pointer; }
+      footer { padding: 12px 0 40px; color: var(--muted); font-size: .88rem; text-align: center; }
+      @media (max-width: 640px) {
+        .requirements, .rows { grid-template-columns: 1fr; }
+        .badge { font-size: .82rem; }
+        .sparkle.s1 { left: 2%; }
+        .sparkle.s2 { right: 3%; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="topbar">
+        <div class="switch" role="group" aria-label="Language selector">
+          <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn" type="button" data-lang="el" aria-pressed="false">EL</button>
+          <button class="lang-btn" type="button" data-lang="kr" aria-pressed="false">KR</button>
+        </div>
+      </div>
+
+      <header class="hero">
+        <div class="sparkle s1" aria-hidden="true">✦</div>
+        <div class="sparkle s2" aria-hidden="true">✦</div>
+        <div class="eyebrow" data-i18n="eyebrow">Open Auditions</div>
+        <h1 class="title"><span class="special">ØFF</span>-LINE</h1>
+        <p class="sub" data-i18n="intro">Inspired by the energy of K-pop performance culture, we are building a 10-member dance crew in Nicosia.</p>
+        <div class="badges">
+          <div class="badge pink" data-i18n="locationBadge">📍 Nicosia, Cyprus</div>
+          <div class="badge mint" data-i18n="spotsBadge">⚡ 10 Spots Open</div>
+          <div class="badge purple" data-i18n="crewBadge">🔥 Dance-Only Crew</div>
+        </div>
+      </header>
+
+      <main>
+        <section class="card" aria-labelledby="requirementsTitle">
+          <div class="section-head"><div class="num" aria-hidden="true">1</div><h2 id="requirementsTitle" data-i18n="requirementsTitle">Audition Requirements</h2></div>
+          <div class="requirements">
+            <article class="req-item"><h3 data-i18n="locationTitle">Location</h3><p data-i18n="locationText">You must be based in Nicosia or be able to travel regularly for weekly practice.</p></article>
+            <article class="req-item"><h3 data-i18n="videoTitle">Video</h3><p data-i18n="videoText">Submit a 30–60 second dance video with your full body in frame.</p></article>
+            <article class="req-item"><h3 data-i18n="languageTitle">Language</h3><p data-i18n="languageText">English and Greek communication skills are required. This is essential for team practice and communication.</p></article>
+            <article class="req-item"><h3 data-i18n="commitmentTitle">Commitment</h3><p data-i18n="commitmentText">We are looking for dancers who are dedicated to training, rehearsals, and performance shoots.</p></article>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="applyTitle">
+          <div class="section-head"><div class="num" aria-hidden="true">2</div><h2 id="applyTitle" data-i18n="applyTitle">Apply to Join</h2></div>
+          <form id="auditionForm">
+            <div class="rows">
+              <div class="field"><label for="fullName" data-i18n="nameLabel">Full Name / Preferred Name <span class="required">*</span></label><input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="e.g. Alex Morgan" required /></div>
+              <div class="field"><label for="age" data-i18n="ageLabel">Age <span class="required">*</span></label><input id="age" name="age" type="number" min="12" max="99" inputmode="numeric" placeholder="e.g. 17" required /></div>
+            </div>
+            <div class="rows">
+              <div class="field"><label for="location" data-i18n="basedLabel">Are you based in Nicosia? <span class="required">*</span></label>
+                <select id="location" name="location" required>
+                  <option value="" selected disabled data-i18n="selectOption">Select option</option>
+                  <option value="Based in Nicosia" data-i18n="yesNicosia">Yes, based in Nicosia</option>
+                  <option value="Can travel to Nicosia" data-i18n="canTravel">No, but I can travel to Nicosia</option>
+                </select>
+              </div>
+              <div class="field"><label for="contact" data-i18n="contactLabel">Instagram Handle or Phone <span class="required">*</span></label><input id="contact" name="contact" type="text" autocomplete="tel" placeholder="@yourhandle or phone number" required /></div>
+            </div>
+            <div class="field"><label for="videoLink" data-i18n="videoLinkLabel">Dance Video Link <span class="required">*</span></label><input id="videoLink" name="videoLink" type="url" inputmode="url" placeholder="https://..." required /></div>
+            <div class="field"><label for="experience" data-i18n="experienceLabel">Dance Experience &amp; Favorite Song to Cover</label><textarea id="experience" name="experience" data-i18n-placeholder="experiencePlaceholder" placeholder="Tell us about your dance background, favorite songs, and groups you love dancing to..."></textarea></div>
+            <div class="field"><label for="availability" data-i18n="availabilityLabel">Weekly Practice Availability</label><input id="availability" name="availability" type="text" data-i18n-placeholder="availabilityPlaceholder" placeholder="e.g. Weekends + weekday evenings" /></div>
+            <div class="checkbox-block">
+              <label class="checkbox-label"><input type="checkbox" id="englishCheck" name="english" required /><span data-i18n="englishCheck">I can communicate in English <span class="required">*</span></span></label>
+              <label class="checkbox-label"><input type="checkbox" id="greekCheck" name="greek" required /><span data-i18n="greekCheck">I can communicate in Greek <span class="required">*</span></span></label>
+              <div class="small-note" data-i18n="languageNote">English and Greek are both required for this audition.</div>
+            </div>
+            <button type="submit" class="submit-btn" data-i18n="submit">SUBMIT AUDITION</button>
+          </form>
+        </section>
+      </main>
+      <footer data-i18n="footer">© ØFF-LINE Dance Crew • Nicosia, Cyprus</footer>
+    </div>
+
+    <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalMessage">
+      <div class="modal-box">
+        <h3 id="modalTitle" data-i18n="modalTitle">Application Ready</h3>
+        <p id="modalMessage" data-i18n="modalMessage">Thanks for your interest in ØFF-LINE! This demo form does not send your details. Please contact the crew directly to submit your audition.</p>
+        <button type="button" id="closeModal" data-i18n="modalClose">GOT IT</button>
+      </div>
+    </div>
+
+    <script>
+      const translations = {
+        en: {
+          eyebrow: "Open Auditions", intro: "Inspired by the energy of K-pop performance culture, we are building a 10-member dance crew in Nicosia.",
+          locationBadge: "📍 Nicosia, Cyprus", spotsBadge: "⚡ 10 Spots Open", crewBadge: "🔥 Dance-Only Crew",
+          requirementsTitle: "Audition Requirements", locationTitle: "Location", locationText: "You must be based in Nicosia or be able to travel regularly for weekly practice.",
+          videoTitle: "Video", videoText: "Submit a 30–60 second dance video with your full body in frame.", languageTitle: "Language", languageText: "English and Greek communication skills are required. This is essential for team practice and communication.",
+          commitmentTitle: "Commitment", commitmentText: "We are looking for dancers who are dedicated to training, rehearsals, and performance shoots.", applyTitle: "Apply to Join",
+          nameLabel: 'Full Name / Preferred Name <span class="required">*</span>', ageLabel: 'Age <span class="required">*</span>', basedLabel: 'Are you based in Nicosia? <span class="required">*</span>',
+          selectOption: "Select option", yesNicosia: "Yes, based in Nicosia", canTravel: "No, but I can travel to Nicosia", contactLabel: 'Instagram Handle or Phone <span class="required">*</span>',
+          videoLinkLabel: 'Dance Video Link <span class="required">*</span>', experienceLabel: "Dance Experience & Favorite Song to Cover", experiencePlaceholder: "Tell us about your dance background, favorite songs, and groups you love dancing to...",
+          availabilityLabel: "Weekly Practice Availability", availabilityPlaceholder: "e.g. Weekends + weekday evenings", englishCheck: 'I can communicate in English <span class="required">*</span>', greekCheck: 'I can communicate in Greek <span class="required">*</span>',
+          languageNote: "English and Greek are both required for this audition.", submit: "SUBMIT AUDITION", footer: "© ØFF-LINE Dance Crew • Nicosia, Cyprus", modalTitle: "Application Ready",
+          modalMessage: "Thanks for your interest in ØFF-LINE! This demo form does not send your details. Please contact the crew directly to submit your audition.", modalClose: "GOT IT"
+        },
+        el: {
+          eyebrow: "Ανοιχτές ακροάσεις", intro: "Με έμπνευση από την ενέργεια των K-pop performances, δημιουργούμε μια χορευτική ομάδα 10 ατόμων στη Λευκωσία.",
+          locationBadge: "📍 Λευκωσία, Κύπρος", spotsBadge: "⚡ 10 διαθέσιμες θέσεις", crewBadge: "🔥 Αποκλειστικά χορευτική ομάδα",
+          requirementsTitle: "Απαιτήσεις ακρόασης", locationTitle: "Τοποθεσία", locationText: "Πρέπει να μένεις στη Λευκωσία ή να μπορείς να μετακινείσαι τακτικά για εβδομαδιαίες πρόβες.",
+          videoTitle: "Βίντεο", videoText: "Στείλε ένα βίντεο χορού 30–60 δευτερολέπτων, με ολόκληρο το σώμα σου στο πλάνο.", languageTitle: "Γλώσσες", languageText: "Απαιτείται επικοινωνία στα Αγγλικά και στα Ελληνικά για τις πρόβες και την επικοινωνία της ομάδας.",
+          commitmentTitle: "Δέσμευση", commitmentText: "Αναζητούμε χορευτές αφοσιωμένους στην προπόνηση, στις πρόβες και στα γυρίσματα εμφανίσεων.", applyTitle: "Κάνε αίτηση",
+          nameLabel: 'Ονοματεπώνυμο / Όνομα προτίμησης <span class="required">*</span>', ageLabel: 'Ηλικία <span class="required">*</span>', basedLabel: 'Μένεις στη Λευκωσία; <span class="required">*</span>',
+          selectOption: "Επίλεξε", yesNicosia: "Ναι, μένω στη Λευκωσία", canTravel: "Όχι, αλλά μπορώ να μετακινούμαι στη Λευκωσία", contactLabel: 'Instagram ή τηλέφωνο <span class="required">*</span>',
+          videoLinkLabel: 'Σύνδεσμος βίντεο χορού <span class="required">*</span>', experienceLabel: "Χορευτική εμπειρία και αγαπημένο τραγούδι", experiencePlaceholder: "Μίλησέ μας για την εμπειρία σου, τα αγαπημένα σου τραγούδια και τα συγκροτήματα που σου αρέσει να χορεύεις...",
+          availabilityLabel: "Διαθεσιμότητα για εβδομαδιαίες πρόβες", availabilityPlaceholder: "π.χ. Σαββατοκύριακα και απογεύματα καθημερινών", englishCheck: 'Μπορώ να επικοινωνήσω στα Αγγλικά <span class="required">*</span>', greekCheck: 'Μπορώ να επικοινωνήσω στα Ελληνικά <span class="required">*</span>',
+          languageNote: "Απαιτείται επικοινωνία και στα Αγγλικά και στα Ελληνικά.", submit: "ΥΠΟΒΟΛΗ ΑΙΤΗΣΗΣ", footer: "© ØFF-LINE Dance Crew • Λευκωσία, Κύπρος", modalTitle: "Η αίτηση είναι έτοιμη",
+          modalMessage: "Ευχαριστούμε για το ενδιαφέρον σου για την ØFF-LINE! Αυτή η δοκιμαστική φόρμα δεν στέλνει τα στοιχεία σου. Επικοινώνησε απευθείας με την ομάδα για να υποβάλεις την ακρόασή σου.", modalClose: "ΕΝΤΑΞΕΙ"
+        },
+        kr: {
+          eyebrow: "오디션 지원", intro: "K-pop 퍼포먼스 문화의 에너지에서 영감을 받아 니코시아에서 10명 댄스 크루를 만들고 있습니다.",
+          locationBadge: "📍 키프로스 니코시아", spotsBadge: "⚡ 모집 인원 10명", crewBadge: "🔥 댄스 전문 크루",
+          requirementsTitle: "오디션 지원 요건", locationTitle: "지역", locationText: "니코시아에 거주하거나 주간 연습을 위해 정기적으로 이동할 수 있어야 합니다.",
+          videoTitle: "영상", videoText: "전신이 보이는 30~60초 댄스 영상을 제출해 주세요.", languageTitle: "언어", languageText: "팀 연습과 소통을 위해 영어와 그리스어로 의사소통할 수 있어야 합니다.",
+          commitmentTitle: "참여 의지", commitmentText: "훈련, 리허설, 퍼포먼스 촬영에 꾸준히 참여할 댄서를 찾고 있습니다.", applyTitle: "지원하기",
+          nameLabel: '이름 / 활동명 <span class="required">*</span>', ageLabel: '나이 <span class="required">*</span>', basedLabel: '니코시아에 거주하나요? <span class="required">*</span>',
+          selectOption: "선택해 주세요", yesNicosia: "네, 니코시아에 거주합니다", canTravel: "아니요, 니코시아로 이동할 수 있습니다", contactLabel: '인스타그램 아이디 또는 전화번호 <span class="required">*</span>',
+          videoLinkLabel: '댄스 영상 링크 <span class="required">*</span>', experienceLabel: "댄스 경험 및 커버하고 싶은 곡", experiencePlaceholder: "댄스 경험, 좋아하는 노래와 즐겨 추는 그룹을 알려 주세요...",
+          availabilityLabel: "주간 연습 가능 시간", availabilityPlaceholder: "예: 주말 및 평일 저녁", englishCheck: '영어로 의사소통할 수 있습니다 <span class="required">*</span>', greekCheck: '그리스어로 의사소통할 수 있습니다 <span class="required">*</span>',
+          languageNote: "오디션 지원에는 영어와 그리스어가 모두 필요합니다.", submit: "오디션 지원하기", footer: "© ØFF-LINE Dance Crew • 키프로스 니코시아", modalTitle: "지원서 작성 완료",
+          modalMessage: "ØFF-LINE에 관심을 가져 주셔서 감사합니다! 이 데모 양식은 정보를 전송하지 않습니다. 오디션 제출은 크루에 직접 문의해 주세요.", modalClose: "확인"
+        }
+      };
+
+      const form = document.getElementById("auditionForm");
+      const modal = document.getElementById("successModal");
+      const closeModalButton = document.getElementById("closeModal");
+      const langButtons = document.querySelectorAll(".lang-btn");
+
+      function setLanguage(language) {
+        const dictionary = translations[language] || translations.en;
+        document.documentElement.lang = language === "kr" ? "ko" : language;
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.dataset.i18n;
+          if (dictionary[key]) element.innerHTML = dictionary[key];
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+          element.placeholder = dictionary[element.dataset.i18nPlaceholder] || "";
+        });
+        langButtons.forEach((button) => {
+          const selected = button.dataset.lang === language;
+          button.classList.toggle("active", selected);
+          button.setAttribute("aria-pressed", String(selected));
+        });
+      }
+
+      langButtons.forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.lang)));
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        modal.classList.add("show");
+        closeModalButton.focus();
+      });
+      function closeModal() {
+        modal.classList.remove("show");
+        form.reset();
+        document.getElementById("fullName").focus();
+      }
+      closeModalButton.addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => { if (event.target === modal) closeModal(); });
+      document.addEventListener("keydown", (event) => { if (event.key === "Escape" && modal.classList.contains("show")) closeModal(); });
+    </script>
+  </body>
+</html>
